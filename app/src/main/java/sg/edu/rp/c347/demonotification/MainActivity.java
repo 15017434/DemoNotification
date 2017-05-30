@@ -4,6 +4,8 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -37,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
                 builder.setSmallIcon(R.mipmap.ic_launcher);
                 builder.setContentIntent(pIntent);
                 builder.setAutoCancel(true);
+
+                Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                builder.setSound(uri);
+                builder.setPriority(Notification.PRIORITY_HIGH);
 
                 Notification n = builder.build();
                 NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
